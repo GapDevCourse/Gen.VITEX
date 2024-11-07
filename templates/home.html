@@ -3,270 +3,291 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Video to Text & Key Points</title>
+  <meta name="description" content="Convert YouTube videos to text, get summaries, and interact with AI-powered questions and answers.">
+  <title>Gen.Vitex - YouTube Video to Text Converter</title>
+  <!-- Font Awesome for YouTube Icon -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f4f4f9;
+      box-sizing: border-box;
     }
-    .container {
-      width: 600px;
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    header .logo h1 {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo h1 i {
+      margin-right: 10px;
+    }
+
+    header .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    header .nav-links li {
+      margin: 0 10px;
+    }
+
+    header .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    #hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px 20px;
+      background-color: #007bff;
+      color: white;
+    }
+
+    #hero .hero-content {
+      width: 60%;
+    }
+
+    #hero .hero-content h2 {
+      font-size: 36px;
+    }
+
+    #hero .hero-content p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    #hero input {
+      padding: 10px;
+      width: 70%;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    #hero button {
+      padding: 10px 20px;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #how-it-works, #features, #cta {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #fff;
+      margin: 20px 0;
+    }
+
+    #how-it-works h2, #features h2, #cta h2 {
+      font-size: 30px;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .step {
+      width: 30%;
       padding: 20px;
-      background: white;
+      background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    .input-group {
+
+    .feature-cards {
       display: flex;
-      margin-bottom: 20px;
+      justify-content: space-around;
+      margin-top: 30px;
     }
-    .input-group input {
-      flex: 1;
+
+    .card {
+      width: 30%;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #ai-question {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
+    }
+
+    #ai-question textarea {
+      width: 100%;
       padding: 10px;
       font-size: 16px;
-      border: 1px solid #ccc;
       border-radius: 4px;
+      border: 1px solid #ddd;
+      margin-bottom: 15px;
     }
-    .input-group button {
-      padding: 10px;
-      margin-left: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .input-group button:hover {
-      background-color: #45a049;
-    }
-    .chatbox {
-      border: 1px solid #ccc;
-      padding: 10px;
-      height: 300px;
-      overflow-y: scroll;
-      margin-bottom: 20px;
-      background-color: #fafafa;
-    }
-    .chatbox .message {
-      margin: 10px 0;
-    }
-    .chatbox .user-msg {
-      text-align: right;
-      color: #1e7e34;
-    }
-    .chatbox .bot-msg {
-      text-align: left;
-      color: #007bff;
-    }
-    .result-section {
+
+    #ai-answer {
       margin-top: 20px;
+      padding: 15px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+      font-size: 16px;
     }
-    .key-points, .questions {
-      padding: 10px;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-      background-color: #fafafa;
-    }
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-    }
-    .button-group button {
-      padding: 10px 15px;
-      background-color: #007bff;
+
+    footer {
+      background-color: #333;
       color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer .social-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    #cta button {
+      padding: 15px 30px;
+      background-color: #28a745;
+      color: white;
+      font-size: 18px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
     }
-    .button-group button:hover {
-      background-color: #0056b3;
+
+    #contact {
+      background-color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-size: 30px;
+    }
+
+    #contact p {
+      font-size: 18px;
+      margin-top: 20px;
     }
   </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>Gen.VITEX</h1>
-
-    <!-- YouTube URL Input Section -->
-    <div class="input-group">
-      <input type="text" id="youtubeUrl" placeholder="Enter YouTube video URL">
-      <button id="convertBtn">Convert</button>
-    </div>
-
-    <!-- Chat Box Section -->
-    <div class="chatbox" id="chatbox">
-      <div class="message bot-msg">endhi ala chusthunav saripoledhaa,sadhuvukoo .</div>
-    </div>
-
-    <!-- Chat Input Section -->
-    <input type="text" id="userInput" placeholder="Type your message here..." onkeyup="sendMessage(event)">
-
-    <!-- Result Section (Key Points & Questions) -->
-    <div class="result-section">
-      <div id="keyPoints" class="key-points" style="display: none;">
-        <h3>Key Points</h3>
-        <ul id="keyPointsList"></ul>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">
+        <h1><i class="fab fa-youtube"></i> Gen.Vitex</h1>
       </div>
-      <div id="questions" class="questions" style="display: none;">
-        <h3>Related Questions</h3>
-        <ul id="questionsList"></ul>
-      </div>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <!-- Buttons to Generate PDF and PPT -->
-      <div class="button-group">
-        <button id="generatePdfBtn">Generate PDF</button>
-        <button id="generatePptBtn">Generate PPT</button>
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <h2>Transform Any YouTube Video into Text</h2>
+      <p>Get summaries, key points, and insights from your favorite YouTube videos in seconds.</p>
+      <input type="url" id="youtube-url" placeholder="Enter YouTube Video URL" />
+      <button id="convert-btn">Convert Video</button>
+    </div>
+    <div class="hero-image">
+      <img src="https://via.placeholder.com/200" alt="YouTube Video to Text" />
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1: Enter YouTube URL</h3>
+        <p>Paste the URL of the YouTube video you want to convert.</p>
+      </div>
+      <div class="step">
+        <h3>Step 2: Get Text</h3>
+        <p>Our AI extracts the video’s transcript and summarizes the key points.</p>
+      </div>
+      <div class="step">
+        <h3>Step 3: Ask Questions</h3>
+        <p>Use our AI-powered question box to ask anything about the video content.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.10.0/dist/pptxgen.min.js"></script>
+  <!-- Features Section -->
+  <section id="features">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-cards">
+      <div class="card">
+        <h3>Fast and Accurate</h3>
+        <p>Get an accurate transcription and summary in minutes.</p>
+      </div>
+      <div class="card">
+        <h3>AI-Powered Summaries</h3>
+        <p>AI summarizes the key points and main ideas in seconds.</p>
+      </div>
+      <div class="card">
+        <h3>Interactive Q&A</h3>
+        <p>Ask any questions, and get AI-generated answers based on the video content.</p>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    const convertBtn = document.getElementById('convertBtn');
-    const youtubeUrlInput = document.getElementById('youtubeUrl');
-    const chatbox = document.getElementById('chatbox');
-    const userInput = document.getElementById('userInput');
-    const keyPointsSection = document.getElementById('keyPoints');
-    const keyPointsList = document.getElementById('keyPointsList');
-    const questionsSection = document.getElementById('questions');
-    const questionsList = document.getElementById('questionsList');
-    const generatePdfBtn = document.getElementById('generatePdfBtn');
-    const generatePptBtn = document.getElementById('generatePptBtn');
+  <!-- AI Question Box Section -->
+  <section id="ai-question">
+    <h2>Ask Questions About the Video</h2>
+    <div class="question-box">
+      <textarea id="user-question" placeholder="Ask anything about the video..." rows="4"></textarea>
+      <button id="ask-question-btn">Ask</button>
+      <div id="ai-answer" class="ai-answer"></div>
+    </div>
+  </section>
 
-    let transcriptText = ''; // Placeholder for the video transcript
+  <!-- Call to Action Section -->
+  <section id="cta">
+    <h2>Ready to Convert Your Video?</h2>
+    <button id="convert-now-btn">Convert Now</button>
+  </section>
 
-    // Function to handle sending messages in the chatbox
-    function sendMessage(event) {
-      if (event.key === 'Enter' && userInput.value.trim() !== '') {
-        const message = userInput.value.trim();
-        displayMessage(message, 'user');
-        processUserInput(message);
-        userInput.value = ''; // Clear input field
-      }
-    }
-
-    // Display messages in the chatbox
-    function displayMessage(message, sender) {
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message');
-      messageElement.classList.add(sender === 'user' ? 'user-msg' : 'bot-msg');
-      messageElement.textContent = message;
-      chatbox.appendChild(messageElement);
-      chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
-    }
-
-    // Process user input
-    function processUserInput(message) {
-      if (message.toLowerCase().includes('convert')) {
-        const url = youtubeUrlInput.value.trim();
-        if (url && isValidYouTubeURL(url)) {
-          displayMessage("Processing video...", 'bot');
-          convertVideoToText(url);
-        } else {
-          displayMessage("Please enter a valid YouTube URL.", 'bot');
-        }
-      }
-    }
-
-    // Check if the YouTube URL is valid
-    function isValidYouTubeURL(url) {
-      const regex = /^(https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(?:[^\/\n\s]+\/\S+|(?:v|e(?:mbed)?)\/([^&=%\?]{11}))/;
-      return regex.test(url);
-    }
-
-    // Simulate conversion of video to text (mock function)
-    function convertVideoToText(url) {
-      // Simulating API call, in real scenario, we'd use a transcription API
-      setTimeout(() => {
-        transcriptText = "This is a simulated transcript of the video content. The video discusses key aspects of YouTube API usage, its functionalities, and how to interact with it.";
-
-        displayMessage("Video converted to text.", 'bot');
-        displayTranscriptText(transcriptText);
-      }, 2000);
-    }
-
-    // Display the transcript text
-    function displayTranscriptText(text) {
-      // Display key points and related questions
-      displayKeyPoints(text);
-      generateQuestions(text);
-    }
-
-    // Generate and display key points from the transcript text
-    function displayKeyPoints(text) {
-      const keyPoints = extractKeyPoints(text);
-      keyPointsSection.style.display = 'block';
-      keyPointsList.innerHTML = ''; // Clear previous key points
-
-      keyPoints.forEach(point => {
-        const li = document.createElement('li');
-        li.textContent = point;
-        keyPointsList.appendChild(li);
-      });
-    }
-
-    // Mock key points extraction (in reality, NLP or summarization APIs can be used)
-    function extractKeyPoints(text) {
-      return [
-        "YouTube API allows developers to interact with video content.",
-        "You can access video details, comments, and other metadata.",
-        "Understanding API requests is key to utilizing YouTube's functionalities."
-      ];
-    }
-
-    // Generate and display related questions from the transcript text
-    function generateQuestions(text) {
-      const questions = generateRelatedQuestions(text);
-      questionsSection.style.display = 'block';
-      questionsList.innerHTML = ''; // Clear previous questions
-
-      questions.forEach(question => {
-        const li = document.createElement('li');
-        li.textContent = question;
-        questionsList.appendChild(li);
-      });
-    }
-
-    // Mock related question generation (real-world would use NLP models)
-    function generateRelatedQuestions(text) {
-      return [
-        "What is the YouTube API?",
-        "How can developers access YouTube video metadata?",
-        "What functionalities does the YouTube API provide?"
-      ];
-    }
-
-    // Generate PDF from the text content
-    generatePdfBtn.addEventListener('click', () => {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      doc.text(transcriptText, 10, 10);
-      doc.save('Transcript.pdf');
-    });
-
-    // Generate PPT from the text content
-    generatePptBtn.addEventListener('click', () => {
-      const pptx = new PptxGenJS();
-      const slide = pptx.addSlide();
-      slide.addText('Transcript', { x: 1, y: 1, fontSize: 18, fontFace: 'Arial', color: '000000' });
-      slide.addText(transcriptText, { x: 1, y: 2, fontSize: 14, fontFace: 'Arial', color: '000000' });
-      pptx.writeFile({ fileName: 'Transcript.pptx' });
-    });
-
-  </script>
-</body>
-</html>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Contact Name: <strong>MALREDDY ADARSH REDDY</strong></p>
+    <p>Phone: <strong>9640721315</strong></p>
+  </section>
