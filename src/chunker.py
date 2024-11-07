@@ -34,6 +34,12 @@ def chunk_text(text, max_length=512):
     for i in range(0, len(words), max_length):
         yield ' '.join(words[i:i + max_length])
 
+# 4. Summarize and Vectorize Text with FAISS
+def summarize_and_vectorize(text, summarizer_model="facebook/bart-large-cnn", embedding_model="all-MiniLM-L6-v2"):
+    # Summarization pipeline
+    summarizer = pipeline("summarization", model=summarizer_model)
+    chunks = list(chunk_text(text))
+    
     # Summarize each chunk
     summarized_chunks = []
     for chunk in chunks:
