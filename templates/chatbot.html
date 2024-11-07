@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbox</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: darks;
+    }
+
+    .chatbox {
+      width: 400px;
+      max-width: 100%;
+      height: 500px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chatbox-header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .chatbox-body {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #f9f9f9;
+    }
+
+    .message {
+      margin: 5px 0;
+      padding: 8px 12px;
+      border-radius: 5px;
+      max-width: 75%;
+      font-size: 14px;
+    }
+
+    .user-message {
+      background-color: #DCF8C6;
+      align-self: flex-end;
+    }
+
+    .bot-message {
+      background-color: #ECECEC;
+      align-self: flex-start;
+    }
+
+    .chatbox-footer {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+      background-color: #fff;
+    }
+
+    .chatbox-footer input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .chatbox-footer button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin-left: 8px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .chatbox-footer button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chatbox">
+  <div class="chatbox-header">
+    Chatbox
+  </div>
+  <div class="chatbox-body" id="chatboxBody">
+    <!-- Messages will appear here -->
+  </div>
+  <div class="chatbox-footer">
+    <input type="text" id="userInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (message) {
+      addMessage(message, 'user-message');
+      input.value = '';
+      setTimeout(() => addMessage("Hello! How can I help you?", 'bot-message'), 500);
+    }
+  }
+
+  function addMessage(text, className) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', className);
+    messageDiv.textContent = text;
+    document.getElementById('chatboxBody').appendChild(messageDiv);
+    messageDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
