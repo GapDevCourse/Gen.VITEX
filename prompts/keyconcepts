@@ -1,6 +1,5 @@
 Extract Audio: Use a library like pytube or youtube_dl to fetch the video from YouTube and extract audio.
 Convert Audio to Text: Use an API like Google Speech-to-Text, AWS Transcribe, or Whisper (OpenAI's speech-to-text model) to transcribe audio to text.
-
 Use a web framework like Django (Python), Flask (Python), or Node.js to create an API for frontend communication.
 Natural Language Processing Model: Use a language model like GPT-4 for real-time, context-based answers.
 Cloud Services: Use cloud platforms like AWS, Google Cloud, or Azure to handle server scaling, storage, and model hosting.
