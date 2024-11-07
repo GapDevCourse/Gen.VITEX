@@ -291,3 +291,32 @@
     <p>Contact Name: <strong>MALREDDY ADARSH REDDY</strong></p>
     <p>Phone: <strong>9640721315</strong></p>
   </section>
+  <script>
+  document.getElementById("convert-btn").addEventListener("click", async function () {
+    const youtubeUrl = document.getElementById("youtube-url").value;
+
+    if (!youtubeUrl) {
+      alert("Please enter a valid YouTube URL.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/summarize", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ url: youtubeUrl })
+      });
+
+      const data = await response.json();
+
+      // Display the summary
+      const aiAnswerDiv = document.getElementById("ai-answer");
+      aiAnswerDiv.innerHTML = <strong>Summary:</strong> ${data.summary};
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to retrieve summary. Please try again.");
+    }
+  });
+</script>
