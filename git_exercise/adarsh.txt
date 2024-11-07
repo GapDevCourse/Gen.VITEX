@@ -1,0 +1,12 @@
+Hello ! I am adarsh  , currently pursuing my btech 3rd year from kg reddy college.
+I am from Team 8.
+Team members:
+   James(Captain)
+   Govardhan 
+   Manish
+   Balaji
+   Raja vardhan
+   Adarsh
+ 
+Our project name is Gen.ViText. With this project, we are capable of pasting a URL of a YouTube video, and it provides us with a text summary and key points. We also aim to add a chatbot feature that can answer any questions related to the video.
+I have choosen AI development for this project. 
